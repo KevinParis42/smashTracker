@@ -1,26 +1,33 @@
 const express = require('express')
-const app = express()
-const cors = require('cors')
 const bodyParser = require('body-parser')
-const multer = require('multer');
-const upload = multer();
-const cookieParser = require('cookie-parser')
+const multer = require('multer')
 const router = require('./router')
-const dbModel = require('./model/dbModel')
+const db = require('./models/database')
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
-//middleware
+const app = express()
+const upload = multer()
+
+//middlewares
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(upload.array())
 app.use(cookieParser())
 
-
 //router
 app.use('/', router)
 
-dbModel.sequelize.sync()
+const startServer = () => {
+	const server = app.listen(process.env.PORT, () => {
+		console.log(`app launched on port ${process.env.PORT}`)
+	})
+}
 
-app.listen(process.env.PORT, () => {
-	console.log(`app launched on port ${process.env.PORT}`)
-})
+(async () => {
+	await db.sequelize.sync()
+	console.log('db sync')
+	startServer()
+})()
+

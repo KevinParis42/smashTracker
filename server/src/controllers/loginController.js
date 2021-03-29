@@ -1,4 +1,4 @@
-const usersModel = require('../model/usersModel')
+const {User} = require('../models/database')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -6,7 +6,7 @@ exports.logUser = async(req, res) => {
 	const {mail, password} = req.body
 	try {
 		//check user exist
-		const user = await usersModel.User.findOne({ where: {mail: mail} })
+		const user = await User.findOne({ where: {mail: mail} })
 		if (user === null)
 			throw 'User does not exist'
 		//check password

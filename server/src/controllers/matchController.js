@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken')
-const matchModel = require('../model/matchModel')
+const {Match} = require('../models/database')
 
 
 exports.createMatch = async (req, res) => {
 	try {
 		const {opponent, character, opponentCharacter, winner, stockDiff} = req.body
-		await matchModel.Match.create({
+		await Match.create({
 			userId: req.user.id,
 			opponent: opponent,
 			character: character,
@@ -23,7 +23,7 @@ exports.createMatch = async (req, res) => {
 
 exports.getMatchs = async (req, res) => {
 	try {
-		const matchs = await matchModel.Match.findAll({raw: true, where: {userId: req.user.id}})
+		const matchs = await Match.findAll({raw: true, where: {userId: req.user.id}})
 		res.status(200).json(matchs)
 	} catch (error) {
 		console.error(error)
