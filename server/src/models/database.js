@@ -1,4 +1,4 @@
-const {Sequelize} = require("sequelize")
+const Sequelize = require("sequelize")
 const UserModel = require('./userModel')
 const MatchModel = require('./matchModel')
 

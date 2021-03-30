@@ -1,5 +1,4 @@
 import { Input, Select } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
