@@ -10,7 +10,7 @@ const app = express()
 const upload = multer()
 
 //middlewares
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+app.use(cors({credentials: true, origin: 'http://192.168.0.17'}))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(upload.array())
