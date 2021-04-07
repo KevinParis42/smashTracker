@@ -25,7 +25,7 @@ class Tracker extends React.Component {
 		  redirect: 'follow'
 		};
 		
-		fetch("192.168.0.17:4000/match", requestOptions)
+		fetch("192.168.0.17/server/match", requestOptions)
 		  .then(response => response.text())
 		  .then(result => console.log(result))
 		  .catch(error => console.log('error', error));
