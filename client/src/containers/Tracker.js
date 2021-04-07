@@ -19,7 +19,10 @@ class Tracker extends React.Component {
 			redirect: 'follow',
 			credentials: 'include'
 		  })
-		  .then(response => response.json())
+		  .then(response => {
+			  console.log(response)
+			  response.json()
+		  })
 		  .then(result => {
 			  this.setState({history: result})
 			  console.log(result)
