@@ -14,7 +14,7 @@ class Tracker extends React.Component {
 	}
 
 	getHistory() {
-		fetch("http://localhost:4000/match", {
+		fetch("http://192.168.0.17/match", {
 			method: 'GET',
 			redirect: 'follow',
 			credentials: 'include'
