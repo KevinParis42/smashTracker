@@ -17,4 +17,8 @@ router.get('/match', auth, (req, res) => {
 	matchController.getMatchs(req, res)
 })
 
+router.get('/', auth, (req, res) => {
+	res.send('COUCOU CA MARCHE')
+})
+
 module.exports = router
