@@ -26,7 +26,7 @@ class Tracker extends React.Component {
 		};
 		
 		fetch("192.168.0.17:4000/match", requestOptions)
-		  .then(response => response.json())
+		  .then(response => response.text())
 		  .then(result => console.log(result))
 		  .catch(error => console.log('error', error));
 	}
