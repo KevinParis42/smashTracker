@@ -17,17 +17,16 @@ class Tracker extends React.Component {
 		var myHeaders = new Headers();
 		myHeaders.append("Content-Type", "application/json");
 		myHeaders.append("Accept", "application/json");
-		myHeaders.append("Cookie", "token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJwc2V1ZG8iOiJKYXVuZWQiLCJtYWlsIjoia2luamk3MDFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpZCI6MSwiaWF0IjoxNjE3ODA0NjI3LCJleHAiOjE2MTc4MDgyMjd9.gnxpsQn3aXjVEElmFYEPXXXQWg3_Wz3d5LWV_vNCgMYDZHPd0cCaZo_z5DwU0lrodmUaSKKZuXVmlthWzhrWyw");
-		
+
 		var requestOptions = {
 		  method: 'GET',
 		  headers: myHeaders,
 		  redirect: 'follow'
 		};
 		
-		fetch("192.168.0.17/server/match", requestOptions)
-		  .then(response => response.text())
-		  .then(result => console.log(result))
+		fetch("/api/match", requestOptions)
+		  .then(response => response.json())
+		  .then(result => this.setState({history : result}))
 		  .catch(error => console.log('error', error));
 	}
 
